@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Supervisório IoT</title>
+    <link rel="icon" type="image/png" href="icone.png">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="topbar">
+
+        <div class="logo">
+            SUPERVISÓRIO
+        </div>
+
+        <div class="connection">
+            <span class="status-dot"></span>
+            <span>CONECTADO</span>
+        </div>
+
+    </header>
+
+
+    <main class="dashboard">
+
+        <!-- CARDS DE MEDIÇÃO POR FASE -->
+
+        <section class="cards">
+
+            <!-- FASE A -->
+            <div class="card">
+                <div class="card-title">FASE A — TENSÃO</div>
+                <div class="card-value">
+                    <span id="va">127.0</span>
+                    <small>V</small>
+                </div>
+                <div class="card-sub">
+                    Corrente: <span id="ia">0.00</span> A
+                </div>
+            </div>
+
+            <!-- FASE B -->
+            <div class="card">
+                <div class="card-title">FASE B — TENSÃO</div>
+                <div class="card-value">
+                    <span id="vb">127.0</span>
+                    <small>V</small>
+                </div>
+                <div class="card-sub">
+                    Corrente: <span id="ib">0.00</span> A
+                </div>
+            </div>
+
+            <!-- FASE C -->
+            <div class="card">
+                <div class="card-title">FASE C — TENSÃO</div>
+                <div class="card-value">
+                    <span id="vc">127.0</span>
+                    <small>V</small>
+                </div>
+                <div class="card-sub">
+                    Corrente: <span id="ic">0.00</span> A
+                </div>
+            </div>
+
+            <!-- POTÊNCIA ATIVA -->
+            <div class="card">
+                <div class="card-title">POTÊNCIA ATIVA</div>
+                <div class="card-value">
+                    <span id="p-ativa">0.00</span>
+                    <small>W</small>
+                </div>
+            </div>
+
+            <!-- POTÊNCIA REATIVA -->
+            <div class="card">
+                <div class="card-title">POTÊNCIA REATIVA</div>
+                <div class="card-value">
+                    <span id="p-reativa">0.00</span>
+                    <small>var</small>
+                </div>
+            </div>
+
+            <!-- FATOR DE POTÊNCIA -->
+            <div class="card">
+                <div class="card-title">FATOR DE POTÊNCIA</div>
+                <div class="card-value">
+                    <span id="fp">0.00</span>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- GRÁFICO TRIFÁSICO -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <h2>Sistema Trifásico 127/220 V</h2>
+
+                <div class="chart-controls">
+                    <span id="chart-status">Monitoramento</span>
+                    <button id="btn-pausar" class="btn-chart">PAUSAR</button>
+                </div>
+
+            </div>
+
+            <div class="chart-container">
+
+                <canvas id="voltageChart"></canvas>
+
+            </div>
+
+        </section>
+
+
+        <!-- CARGAS -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <h2>Controle de Cargas</h2>
+
+            </div>
+
+
+            <div class="loads">
+
+                <div class="load">
+
+                    <div>
+                        <strong>RELÉ 1</strong>
+
+                        <span id="relay1-status">
+                            DESLIGADO
+                        </span>
+                    </div>
+
+                    <button onclick="toggleLoad('relay1')" class="off">
+                        LIGAR
+                    </button>
+
+                </div>
+
+
+                <div class="load">
+
+                    <div>
+                        <strong>RELÉ 2</strong>
+
+                        <span id="relay2-status">
+                            DESLIGADO
+                        </span>
+                    </div>
+
+                    <button onclick="toggleLoad('relay2')" class="off">
+                        LIGAR
+                    </button>
+
+                </div>
+
+
+                <div class="load">
+
+                    <div>
+                        <strong>MOTOR</strong>
+
+                        <span id="motor-status">
+                            DESLIGADO
+                        </span>
+                    </div>
+
+                    <button onclick="toggleLoad('motor')" class="off">
+                        LIGAR
+                    </button>
+
+                </div>
+
+
+                <div class="load">
+
+                    <div>
+                        <strong>VENTILADOR</strong>
+
+                        <span id="fan-status">
+                            DESLIGADO
+                        </span>
+                    </div>
+
+                    <button onclick="toggleLoad('fan')" class="off">
+                        LIGAR
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
